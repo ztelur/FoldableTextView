@@ -20,7 +20,7 @@ public class MainActivity extends ActionBarActivity {
 
         mTextView = (FoldableTextView)findViewById(R.id.textview);
 
-        mTextView.setText("aaaaaaaaa\naaaaa\naaaaaaa\naaaaa\naaaaaa");
+        mTextView.setText("我们的\n地方\n没有所谓的\n真理和\n强权");
 
         Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
