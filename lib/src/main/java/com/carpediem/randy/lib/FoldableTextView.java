@@ -1,6 +1,7 @@
 package com.carpediem.randy.lib;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -48,13 +49,27 @@ public class FoldableTextView extends TextView {
     public FoldableTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
+        getValueFormAttrs(attrs);
     }
 
     public FoldableTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
+        getValueFormAttrs(attrs);
     }
 
+    private void getValueFormAttrs(AttributeSet attrs) {
+        if (attrs == null) {
+            return;
+        }
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs,R.styleable.FoldableTextView);
+        mMaxLineCount = typedArray.getInt(R.styleable.FoldableTextView_maxFoldedLines,DEFAULT_MAX_LINE);
+        mAnimationAlphaStart = typedArray.getFloat(R.styleable.FoldableTextView_animAlphaStart,DEFAULT_ALPHA_START);
+        mAnimTime = typedArray.getInt(R.styleable.FoldableTextView_animDuration,DEFAULT_ANIM_TIME);
+
+        typedArray.recycle();
+
+    }
     public void init(Context context) {
         setBackgroundColor(Color.BLUE);
     }
